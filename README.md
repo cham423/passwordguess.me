@@ -4,5 +4,5 @@ This is a basic script I wrote to automate the getuserrealm.srf enumeration tric
 Hopefully it will evolve/develop over time as I build more functionality into it. 
 
 
-#requirements
+# requirements
 go get github.com/gookit/color
