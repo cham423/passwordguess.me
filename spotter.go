@@ -61,6 +61,10 @@ func main() {
 			color.Warn.Printf("MX Records indicate ProofPoint email filtering\n")
 			break
 		}
+		if strings.Contains(mxRecord.Host, "mimecast.com") {
+			color.Warn.Printf("MX Records indicate Mimecast email filtering\n")
+			break
+		}
 	}
 
 	//build URL for GetUserRealm
@@ -96,10 +100,10 @@ func main() {
 	if target1.NameSpaceType == "Unknown" {
 		color.Warn.Printf("NameSpaceType was %v, meaning this domain does not exist in Office365 or Azure\n", target1.NameSpaceType)
 	} else if target1.NameSpaceType == "Managed" {
-		color.Info.Printf("NameSpaceType was %v, meaning this domain is not federated (all auth goes through office365)\n", target1.NameSpaceType)
-		color.Info.Printf("Recommendation: use https://bitbucket.org/grimhacker/office365userenum\n")
+		color.Info.Printf("NameSpaceType was %v, meaning this domain is not federated (all auth goes through Office365)\n", target1.NameSpaceType)
+		color.Info.Printf("Recommendation: use Go365 - https://github.com/optiv/Go365")
 	} else if target1.NameSpaceType == "Federated" {
-		color.Info.Printf("NameSpaceType was %v, meaning this domain has been verified but is federated (they do not use Office365 built-in auth)\n", target1.NameSpaceType)
+		color.Info.Printf("NameSpaceType was %v, meaning this domain has been verified in Office365 but they use a third-party auth provider)\n", target1.NameSpaceType)
 		color.Info.Printf("AuthURL for %v: %v\n", givenDomain, target1.AuthURL)
 		if strings.Contains(target1.AuthURL, "idp/prp.wsf") {
 			color.Warn.Printf("AuthURL looks like Ping Identity based on 'idp/prp.wsf' in URL (manually verify)\n")
@@ -109,6 +113,9 @@ func main() {
 		}
 		if strings.Contains(target1.AuthURL, "adfs/ls") {
 			color.Warn.Printf("AuthURL looks like ADFS based on 'adfs/ls' in URL (manually verify)\n")
+		}
+		if strings.Contains(target1.AuthURL, "nidp/app") {
+			color.Warn.Printf("AuthURL looks like NetIQ Access Manager based on 'nidp/app' in URL (manually verify)\n")
 		}
 	} else {
 		color.Error.Printf("NameSpaceType looked weird, go investigate and submit an issue :)\n")
