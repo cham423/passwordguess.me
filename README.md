@@ -3,7 +3,6 @@ This is a basic script I wrote to automate the getuserrealm.srf enumeration tric
 
 Office 365 provides information to mail clients to be used during setup, including the authentication configuration and SSO url if federated auth is used. 
 
-<<<<<<< HEAD
 We can take advantage of this by requesting this configuration manually, and extracting useful information from it.
 
 As of now, the tool is completely passive from an opsec perspective, as it only hits login.microsoftonline.com one time. 
@@ -17,7 +16,6 @@ In the future, I plan to add basic scraping and DNS discovery functionality so t
 
 
 ## requirements
->>>>>>> 73c3268f009e62f9953f9bf247cfff39716f3e78
 go get github.com/gookit/color
 
 # Example Usage
