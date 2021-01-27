@@ -10,12 +10,6 @@ As of now, the tool is completely passive from an opsec perspective, as it only 
 In the future, I plan to add basic scraping and DNS discovery functionality so that enumeration beyond the O365 configuration is possible.
 
 # Requirements
-=======
-# Example
-![image](https://user-images.githubusercontent.com/32488787/80498636-f84a9500-8939-11ea-8193-71887ee4f83d.png)
-
-
-## requirements
 go get github.com/gookit/color
 
 # Example Usage
