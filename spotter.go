@@ -101,7 +101,7 @@ func main() {
 		color.Warn.Printf("NameSpaceType was %v, meaning this domain does not exist in Office365 or Azure\n", target1.NameSpaceType)
 	} else if target1.NameSpaceType == "Managed" {
 		color.Info.Printf("NameSpaceType was %v, meaning this domain is not federated (all auth goes through Office365)\n", target1.NameSpaceType)
-		color.Info.Printf("Recommendation: use Go365 - https://github.com/optiv/Go365")
+		color.Info.Printf("Recommendation: use Go365 - https://github.com/optiv/Go365\n")
 	} else if target1.NameSpaceType == "Federated" {
 		color.Info.Printf("NameSpaceType was %v, meaning this domain has been verified in Office365 but they use a third-party auth provider)\n", target1.NameSpaceType)
 		color.Info.Printf("AuthURL for %v: %v\n", givenDomain, target1.AuthURL)
