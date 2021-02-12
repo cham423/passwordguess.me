@@ -65,6 +65,10 @@ func main() {
 			color.Warn.Printf("MX Records indicate Mimecast email filtering\n")
 			break
 		}
+		if strings.Contains(mxRecord.Host, "protection.outlook.com") {
+			color.Warn.Printf("MX Records indicate Microsoft hosted email -- beware of Exchange Online Protection email filtering\n")
+			break
+		}
 	}
 
 	//build URL for GetUserRealm
